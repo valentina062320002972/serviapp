@@ -2,46 +2,46 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 
 const {
-    UsuarioByIdExists
+    ServidorByIdExists
 } = require('../helpers/req-validators');
 const { validateDate } = require('../middlewares')
 
 const router = Router();
 
 const {
-    UsuarioPost,
-    UsuarioPut,
-    UsuarioDelete,
-    UsuarioGet
-} = require('../controllers/Usuario');
-const { UsuarioGetBy_id } = require('../controllers/Usuario');
+    ServidorPost,
+    ServidorPut,
+    ServidorDelete,
+    ServidorGet
+} = require('../controllers/Servidor');
+const { ServidorGetBy_id } = require('../controllers/Servidor');
 
-router.get('/', UsuarioGet);
+router.get('/', ServidorGet);
 router.delete('/:id', [
     // validateJWT,
     //isAdmin,
     check('id', 'No es un Id valido').isMongoId(),
-    check('id').custom(UsuarioByIdExists),
+    check('id').custom(ServidorByIdExists),
     validateDate
-], UsuarioDelete);
+], ServidorDelete);
 router.post('/', [
-    check('nombre_usuario', 'El nombre es requerido').not().isEmpty(),
-    check('cedula_usuario', 'La cedula debe tener minimo 6 dighitos').isLength({ min: 6 }),
+    check('nombre_Servidor', 'El nombre es requerido').not().isEmpty(),
+    check('cedula_Servidor', 'La cedula debe tener minimo 6 dighitos').isLength({ min: 6 }),
     check('email', 'El correo no es valido').isEmail(),
     //check('email').custom(emailExist),
     check('edad', 'Edad es requerido').not().isEmpty(),
     check('celular', 'celular es requerido').not().isEmpty(),
     validateDate
-], UsuarioPost);
+], ServidorPost);
 
 router.put('/:id', [
     check('id', 'No es valido').isMongoId(),
-    check('id').custom(UsuarioByIdExists),
+    check('id').custom(ServidorByIdExists),
     validateDate
-], UsuarioPut);
+], ServidorPut);
 
-//router.get('/:_id', UsuarioGetBy_id);
+//router.get('/:_id', ServidorGetBy_id);
 
-router.put('/:_id', UsuarioPut);
+router.put('/:_id', ServidorPut);
 
 module.exports = router;

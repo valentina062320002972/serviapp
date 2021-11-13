@@ -5,11 +5,11 @@ const ServicioGet = (req, res) => {
 const ServicioPost = (req, res) => {
     const { name, author } = req.body;
 
-    res.json({ msg: "Post Servicio controller", nombre_Servicio, author });
+    res.json({ msg: "Post Servicio controller", nombre_Servicio });
 }
 
 const ServicioGetBy_id = (req, res) => {
-    res.json({ msg: "get by SKU Servicio controller" });
+    res.json({ msg: "get by _id Servicio controller" });
 }
 
 const ServicioPut = (req, res) => {

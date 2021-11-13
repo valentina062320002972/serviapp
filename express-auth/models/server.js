@@ -8,7 +8,7 @@ class Server {
     constructor() {
         this.app = express();
         this.port = 27017;
-        this.ServicioPath = '/api/Servicio';
+        this.ServicioPath = '/api/Servidor';
         this.UsuarioPath = '/api/Usuario';
 
         this.initDB();

@@ -1,9 +1,9 @@
 const { response, request } = require('express');
 const bcrypt = require('bcryptjs');
-//const Usuario = require('../models/Usuario');
-const User = require('../models/Usuario');
+//const Servidor = require('../models/Servidor');
+const User = require('../models/Servidor');
 //const jwt = require('jsonwebtoken');
-const UsuarioGet = async(req, res) => {
+const ServidorGet = async(req, res) => {
     const { limit = 5, page = 1 } = req.query;
     const query = { status: true };
 
@@ -22,10 +22,10 @@ const UsuarioGet = async(req, res) => {
     });
 }
 
-const UsuarioPost = async(req, res) => {
-    const { password, nombre_usuario, email, edad, apellido, cedula_usuario, celular } = req.body;
+const ServidorPost = async(req, res) => {
+    const { password, nombre_Servidor, email, edad, apellido, cedula_Servidor, celular } = req.body;
 
-    const user = new User({ password, nombre_usuario, email, edad, apellido, cedula_usuario, celular });
+    const user = new User({ password, nombre_Servidor, email, edad, apellido, cedula_Servidor, celular });
 
     const salt = bcrypt.genSaltSync();
     user.password = bcrypt.hashSync(password, salt);
@@ -35,11 +35,11 @@ const UsuarioPost = async(req, res) => {
     res.json({ user });
 }
 
-const UsuarioGetBy_id = (req, res) => {
-    res.json({ msg: "get by id Usuario controller" });
-}
+//const ServidorGetBy_id = (req, res) => {
+//   res.json({ msg: "get by id Servidor controller" });
+//}
 
-const UsuarioPut = async(req, res) => {
+const ServidorPut = async(req, res) => {
     const { id } = req.params;
     const { _id, password, ...data } = req.body;
 
@@ -53,7 +53,7 @@ const UsuarioPut = async(req, res) => {
     res.json(user);
 }
 
-const UsuarioDelete = async(req, res) => {
+const ServidorDelete = async(req, res) => {
     const { id } = req.params;
     const user = await User.findByIdAndDelete(id);
     // const user = await User.findByIdAndUpdate(id, { status: false });
@@ -61,8 +61,8 @@ const UsuarioDelete = async(req, res) => {
 }
 
 module.exports = {
-    UsuarioPost,
-    UsuarioDelete,
-    UsuarioPut,
-    UsuarioGet
+    ServidorPost,
+    ServidorDelete,
+    ServidorPut,
+    ServidorGet
 }

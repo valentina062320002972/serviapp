@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose')
 
-const UsuarioSchema = Schema({
-    nombre_usuario: {
+const ServidorSchema = Schema({
+    nombre_servidor: {
         type: String,
         required: [true, '**** Db: El nombre es requerido']
     },
@@ -16,7 +16,7 @@ const UsuarioSchema = Schema({
 
 
     },
-    cedula_usuario: {
+    cedula_servidor: {
         type: String,
         required: [true, '**** Db: La cedula es requerida'],
         unique: true
@@ -33,7 +33,7 @@ const UsuarioSchema = Schema({
 UsuarioSchema.methods.toJSON = function() {
     const { __v, _id, ...Usuario } = this.toObject();
     UsuarioSchema._id = _id;
-    return Usuario;
+    return Servidor;
 }
 
 module.exports = model('Usuario', UsuarioSchema);
