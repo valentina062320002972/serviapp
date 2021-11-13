@@ -21,5 +21,9 @@ const productsDelete = (req, res) => {
 }
 
 module.exports = {
-    productsGet, productsPost, productsGetBySKU, productsPut, productsDelete
+    productsGet,
+    productsPost,
+    productsGetBySKU,
+    productsPut,
+    productsDelete
 }
