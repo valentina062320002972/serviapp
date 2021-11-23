@@ -28,6 +28,15 @@ const UsuarioSchema = Schema({
     },
     img: {
         type: String
+    },
+    rol: {
+        type: String,
+        required: true
+    },
+    status: {
+        type: Boolean,
+        require: true,
+        default: true
     }
 })
 UsuarioSchema.methods.toJSON = function() {

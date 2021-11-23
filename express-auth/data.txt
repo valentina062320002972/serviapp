@@ -1,0 +1,11 @@
+[
+    {
+        "rol": "Admin"
+    },
+    {
+        "rol": "Seller"
+    },
+    {
+        "rol": "Client"
+    }
+]
